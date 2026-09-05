@@ -1,5 +1,6 @@
-# Rutesh Adithya — Portfolio
+# Rutesh Adithya - Portfolio
 
+🌐 **Live Portfolio:** https://rutesh-adithya-portfolio.vercel.app
 A single-page portfolio site. No build step, no dependencies — just
 `index.html` and an `assets/` folder.
 
