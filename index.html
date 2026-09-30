@@ -3,493 +3,1000 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Rutesh Adithya — AI/ML Engineer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #0B0D10;
-      --panel: #14171B;
-      --panel-line: #262B31;
-      --ink: #EAE7DF;
-      --ink-dim: #8B9198;
-      --gold: #E7B75F;
-      --gold-dim: #6b5a34;
-      --steel: #6FA9CF;
-      --radius: 3px;
+    :root{
+      --bg:#0B0D10;
+      --panel:#14171B;
+      --panel-line:#262B31;
+      --ink:#EAE7DF;
+      --ink-dim:#8B9198;
+      --gold:#E7B75F;
+      --gold-dim:#6b5a34;
+      --steel:#6FA9CF;
+      --radius:3px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:'Inter',sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
     }
 
-    html {
-      scroll-behavior: smooth;
+    h1,h2,h3,.display{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:600;
+      letter-spacing:-0.01em;
     }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Inter", sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+    a{color:inherit;text-decoration:none}
+
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 32px;
     }
 
-    h1,
-    h2,
-    h3,
-    .display {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+    /* ---------- Nav ---------- */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:50;
+      background:rgba(11,13,16,.6);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid transparent;
+      transition:border-color .3s ease;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    header.scrolled{border-bottom-color:var(--panel-line)}
+
+    nav.wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:68px;
     }
 
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 32px;
+    .brand{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:600;
+      font-size:1.05rem;
     }
 
-    /* ---------- Navigation ---------- */
+    .brand span{color:var(--gold)}
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      background: rgba(11, 13, 16, 0.6);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s ease;
+    .nav-links{
+      display:flex;
+      gap:28px;
+      font-size:.9rem;
+      color:var(--ink-dim);
     }
 
-    header.scrolled {
-      border-bottom-color: var(--panel-line);
+    .nav-links a:hover{color:var(--ink)}
+
+    .nav-cta{
+      border:1px solid var(--panel-line);
+      padding:8px 16px;
+      border-radius:var(--radius);
+      font-size:.85rem;
+      color:var(--ink);
     }
 
-    nav.wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
+    .nav-cta:hover{
+      border-color:var(--gold);
+      color:var(--gold);
     }
 
-    .brand {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
-
-    .brand span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      font-size: 0.9rem;
-      color: var(--ink-dim);
-    }
-
-    .nav-links a:hover {
-      color: var(--ink);
-    }
-
-    .nav-cta {
-      border: 1px solid var(--panel-line);
-      padding: 8px 16px;
-      border-radius: var(--radius);
-      font-size: 0.85rem;
-      color: var(--ink);
-    }
-
-    .nav-cta:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
+    @media(max-width:720px){
+      .nav-links{display:none}
     }
 
     /* ---------- Hero ---------- */
-
-    section#hero {
-      padding: 168px 0 96px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-      min-height: 88vh;
+    section#hero{
+      padding:168px 0 96px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:48px;
+      align-items:center;
+      min-height:88vh;
     }
 
-    .eyebrow {
-      color: var(--ink-dim);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
+    .eyebrow{
+      color:var(--ink-dim);
+      font-size:.95rem;
+      margin-bottom:18px;
     }
 
-    h1.name {
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 1.05;
-      margin-bottom: 20px;
+    h1.name{
+      font-size:clamp(2.4rem,5vw,4rem);
+      line-height:1.05;
+      margin-bottom:20px;
     }
 
-    .role-line {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      color: var(--gold);
-      height: 1.8em;
-      margin-bottom: 22px;
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 500;
+    .role-line{
+      font-size:clamp(1.1rem,2vw,1.4rem);
+      color:var(--gold);
+      min-height:1.8em;
+      margin-bottom:22px;
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:500;
     }
 
-    .role-line .cursor {
-      display: inline-block;
-      width: 2px;
-      background: var(--gold);
-      margin-left: 2px;
-      animation: blink 1s steps(1) infinite;
+    .role-line .cursor{
+      display:inline-block;
+      width:2px;
+      height:1.05em;
+      background:var(--gold);
+      margin-left:2px;
+      vertical-align:-.12em;
+      animation:blink 1s steps(1) infinite;
     }
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
+    @keyframes blink{
+      50%{opacity:0}
     }
 
-    .hero-desc {
-      max-width: 56ch;
-      color: var(--ink-dim);
-      font-size: 1.02rem;
-      margin-bottom: 34px;
+    .hero-desc{
+      max-width:52ch;
+      color:var(--ink-dim);
+      font-size:1.02rem;
+      margin-bottom:34px;
     }
 
-    .hero-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+    .hero-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: var(--radius);
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition:
-        transform 0.15s ease,
-        background 0.15s ease,
-        border-color 0.15s ease;
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 22px;
+      border-radius:var(--radius);
+      font-size:.92rem;
+      font-weight:500;
+      transition:transform .15s ease,background .15s ease,border-color .15s ease;
     }
 
-    .btn-primary {
-      background: var(--gold);
-      color: #141414;
+    .btn-primary{
+      background:var(--gold);
+      color:#141414;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
+    .btn-primary:hover{transform:translateY(-2px)}
+
+    .btn-ghost{
+      border:1px solid var(--panel-line);
+      color:var(--ink);
     }
 
-    .btn-ghost {
-      border: 1px solid var(--panel-line);
-      color: var(--ink);
+    .btn-ghost:hover{
+      border-color:var(--ink-dim);
+      transform:translateY(-2px);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--ink-dim);
-      transform: translateY(-2px);
+    .hero-visual{
+      position:relative;
+      height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .hero-visual {
-      position: relative;
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    #graph{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      display:block;
     }
 
-    #graph {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
+    .portrait-frame{
+      position:relative;
+      z-index:2;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      padding:6px;
+      background:linear-gradient(160deg,var(--gold),var(--panel-line) 60%);
     }
 
-    .portrait-frame {
-      position: relative;
-      z-index: 2;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      padding: 6px;
-      background: linear-gradient(
-        160deg,
-        var(--gold),
-        var(--panel-line) 60%
-      );
+    .portrait-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      display:block;
+      background:var(--panel);
     }
 
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-      background: var(--panel);
-    }
-
-    @media (max-width: 900px) {
-      section#hero {
-        grid-template-columns: 1fr;
-        padding-top: 130px;
+    @media(max-width:900px){
+      section#hero{
+        grid-template-columns:1fr;
+        padding-top:130px;
       }
 
-      .hero-visual {
-        height: 300px;
-        order: -1;
+      .hero-visual{
+        height:300px;
+        order:-1;
       }
 
-      .portrait-frame {
-        width: 210px;
-        height: 210px;
+      .portrait-frame{
+        width:210px;
+        height:210px;
       }
     }
 
     /* ---------- Section shell ---------- */
-
-    section {
-      padding: 96px 0;
-      border-top: 1px solid var(--panel-line);
-      scroll-margin-top: 68px;
+    section{
+      padding:96px 0;
+      border-top:1px solid var(--panel-line);
+      scroll-margin-top:68px;
     }
 
-    section#hero {
-      border-top: none;
+    section#hero{border-top:none}
+    section.section-alt{background:var(--panel)}
+
+    .section-head{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      margin-bottom:48px;
+      gap:20px;
+      flex-wrap:wrap;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--panel-line);
     }
 
-    section.section-alt {
-      background: var(--panel);
+    .section-head h2{
+      font-size:clamp(1.6rem,3vw,2.1rem);
     }
 
-    .section-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 48px;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--panel-line);
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.6rem, 3vw, 2.1rem);
-    }
-
-    .section-index {
-      color: var(--bg);
-      background: var(--gold);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius);
-      white-space: nowrap;
+    .section-index{
+      color:var(--bg);
+      background:var(--gold);
+      font-family:'Space Grotesk',sans-serif;
+      font-size:.85rem;
+      font-weight:600;
+      padding:4px 10px;
+      border-radius:var(--radius);
+      white-space:nowrap;
     }
 
     /* ---------- About ---------- */
-
-    #about .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
+    #about .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:56px;
     }
 
-    #about p {
-      color: var(--ink-dim);
-      max-width: 58ch;
-      margin-bottom: 16px;
+    #about p{
+      color:var(--ink-dim);
+      max-width:58ch;
+      margin-bottom:16px;
     }
 
-    #about p strong {
-      color: var(--ink);
-      font-weight: 500;
+    #about p strong{
+      color:var(--ink);
+      font-weight:500;
     }
 
-    .fact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .fact-list{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
     }
 
-    .fact {
-      border-left: 2px solid var(--panel-line);
-      padding-left: 18px;
+    .fact{
+      border-left:2px solid var(--panel-line);
+      padding-left:18px;
     }
 
-    .fact .fact-label {
-      color: var(--ink-dim);
-      font-size: 0.85rem;
-      margin-bottom: 4px;
+    .fact .fact-label{
+      color:var(--ink-dim);
+      font-size:.85rem;
+      margin-bottom:4px;
     }
 
-    .fact .fact-value {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.05rem;
+    .fact .fact-value{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.05rem;
     }
 
-    @media (max-width: 800px) {
-      #about .about-grid {
-        grid-template-columns: 1fr;
-      }
+    @media(max-width:800px){
+      #about .about-grid{grid-template-columns:1fr}
     }
 
     /* ---------- Projects ---------- */
-
-    .project {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 28px;
-      padding: 36px 0;
-      border-top: 1px solid var(--panel-line);
+    .project{
+      display:grid;
+      grid-template-columns:64px 1fr;
+      gap:28px;
+      padding:36px 0;
+      border-top:1px solid var(--panel-line);
     }
 
-    .project:first-of-type {
-      border-top: none;
+    .project:first-of-type{border-top:none}
+
+    .project-num{
+      font-family:'Space Grotesk',sans-serif;
+      color:var(--gold-dim);
+      font-size:1.4rem;
     }
 
-    .project-num {
-      font-family: "Space Grotesk", sans-serif;
-      color: var(--gold-dim);
-      font-size: 1.4rem;
+    .project-title{
+      font-size:1.35rem;
+      margin-bottom:10px;
     }
 
-    .project-title {
-      font-size: 1.35rem;
-      margin-bottom: 10px;
+    .project-stack{
+      color:var(--gold);
+      font-family:'Space Grotesk',sans-serif;
+      font-size:.85rem;
+      margin-bottom:14px;
     }
 
-    .project-stack {
-      color: var(--gold);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 0.85rem;
-      margin-bottom: 14px;
+    .project ul{
+      list-style:none;
+      color:var(--ink-dim);
+      max-width:68ch;
     }
 
-    .project ul {
-      list-style: none;
-      color: var(--ink-dim);
-      max-width: 70ch;
+    .project li{
+      position:relative;
+      padding-left:18px;
+      margin-bottom:8px;
     }
 
-    .project li {
-      position: relative;
-      padding-left: 18px;
-      margin-bottom: 8px;
+    .project li::before{
+      content:"—";
+      position:absolute;
+      left:0;
+      color:var(--panel-line);
     }
 
-    .project li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: var(--panel-line);
-    }
-
-    @media (max-width: 640px) {
-      .project {
-        grid-template-columns: 1fr;
-      }
-
-      .project-num {
-        display: none;
-      }
+    @media(max-width:640px){
+      .project{grid-template-columns:1fr}
+      .project-num{display:none}
     }
 
     /* ---------- Skills ---------- */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 36px;
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:36px;
     }
 
-    .skill-group h3 {
-      font-size: 0.95rem;
-      color: var(--ink-dim);
-      font-weight: 500;
-      margin-bottom: 14px;
-      font-family: "Inter", sans-serif;
+    .skill-group h3{
+      font-size:.95rem;
+      color:var(--ink-dim);
+      font-weight:500;
+      margin-bottom:14px;
+      font-family:'Inter',sans-serif;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
     }
 
-    .tag {
-      border: 1px solid var(--panel-line);
-      padding: 6px 12px;
-      border-radius: var(--radius);
-      font-size: 0.85rem;
-      color: var(--ink);
+    .tag{
+      border:1px solid var(--panel-line);
+      padding:6px 12px;
+      border-radius:var(--radius);
+      font-size:.85rem;
+      color:var(--ink);
     }
 
     /* ---------- Timeline ---------- */
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 24px;
-      padding: 22px 0;
-      border-top: 1px solid var(--panel-line);
+    .timeline-item{
+      display:grid;
+      grid-template-columns:160px 1fr;
+      gap:24px;
+      padding:22px 0;
+      border-top:1px solid var(--panel-line);
     }
 
-    .timeline-item:first-child {
-      border-top: none;
+    .timeline-item:first-child{border-top:none}
+
+    .timeline-date{
+      color:var(--ink-dim);
+      font-size:.9rem;
     }
 
-    .timeline-date {
-      color: var(--ink-dim);
-      font-size: 0.9rem;
+    .timeline-title{
+      font-size:1.05rem;
+      margin-bottom:6px;
     }
 
-    .timeline-title {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+    .timeline-sub{
+      color:var(--ink-dim);
+      font-size:.92rem;
+      max-width:60ch;
     }
 
-    .timeline-sub {
-      color: var(--ink-dim);
-      font-size: 0.92rem;
-      max-width: 65ch;
+    @media(max-width:600px){
+      .timeline-item{
+        grid-template-columns:1fr;
+        gap:6px;
+      }
     }
 
-    @media (max-width: 600px) {
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 6px;
-```
+    /* ---------- Contact / Footer ---------- */
+    #contact{text-align:left}
+
+    #contact h2{
+      font-size:clamp(2rem,5vw,3.2rem);
+      max-width:16ch;
+      margin-bottom:28px;
+    }
+
+    .contact-email{
+      font-size:clamp(1.1rem,2.4vw,1.5rem);
+      color:var(--gold);
+      font-family:'Space Grotesk',sans-serif;
+    }
+
+    .contact-email:hover{text-decoration:underline}
+
+    .contact-meta{
+      display:flex;
+      gap:32px;
+      flex-wrap:wrap;
+      margin-top:40px;
+      color:var(--ink-dim);
+      font-size:.92rem;
+    }
+
+    .contact-meta a:hover{color:var(--ink)}
+
+    footer{
+      padding:32px 0;
+      border-top:1px solid var(--panel-line);
+      color:var(--ink-dim);
+      font-size:.82rem;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *{
+        animation-duration:.001ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.001ms !important;
+      }
+    }
+
+    ::selection{
+      background:var(--gold);
+      color:#141414;
+    }
+
+    :focus-visible{
+      outline:2px solid var(--steel);
+      outline-offset:3px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <div class="brand">Rutesh<span>.</span>Adithya</div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+    </div>
+
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero" class="wrap">
+    <div>
+      <div class="eyebrow">Anantapur, Andhra Pradesh, India</div>
+
+      <h1 class="name">Rutesh Adithya</h1>
+
+      <div class="role-line" id="roleLine"></div>
+
+      <p class="hero-desc">
+        Computer Science graduate building practical AI applications with
+        retrieval-augmented generation, machine learning, LLM workflows,
+        and backend APIs.
+      </p>
+
+      <div class="hero-links">
+        <a class="btn btn-primary" href="#work">View my work</a>
+        <a class="btn btn-ghost" href="mailto:ruteshadithya181@gmail.com">Email me</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <canvas id="graph" aria-hidden="true"></canvas>
+
+      <div class="portrait-frame">
+        <img src="assets/profile.png" alt="Portrait of Rutesh Adithya">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="section-alt">
+    <div class="wrap">
+
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="section-index">01</span>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <p>
+            I'm a Computer Science graduate from <strong>RGUKT Nuzvid</strong>,
+            focused on building practical AI-powered applications. I enjoy
+            taking an idea from problem definition through data, model or LLM
+            integration, backend development, testing, and deployment.
+          </p>
+
+          <p>
+            My projects include a medical knowledge assistant using RAG,
+            an AI-powered job recommendation system, and a machine-learning
+            loan prediction application. I prefer projects where AI is used
+            to solve a concrete problem rather than being added only as a demo.
+          </p>
+        </div>
+
+        <div class="fact-list">
+          <div class="fact">
+            <div class="fact-label">Education</div>
+            <div class="fact-value">B.Tech CSE, RGUKT Nuzvid — 2022 to 2026</div>
+          </div>
+
+          <div class="fact">
+            <div class="fact-label">Focus areas</div>
+            <div class="fact-value">RAG, LLM applications, Machine Learning</div>
+          </div>
+
+          <div class="fact">
+            <div class="fact-label">Core stack</div>
+            <div class="fact-value">Python · FastAPI · LangChain · React</div>
+          </div>
+
+          <div class="fact">
+            <div class="fact-label">Based in</div>
+            <div class="fact-value">Anantapur, Andhra Pradesh</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== WORK ==================== -->
+  <section id="work">
+    <div class="wrap">
+
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="section-index">02</span>
+      </div>
+
+      <!-- Project 01 -->
+      <div class="project">
+        <div class="project-num">01</div>
+
+        <div>
+          <div class="project-title">MedAssist AI — Medical Knowledge Assistant</div>
+
+          <div class="project-stack">
+            Python · LangChain · Pinecone · Groq · RAG · Embeddings
+          </div>
+
+          <ul>
+            <li>Built a retrieval-augmented medical knowledge assistant that answers questions from a curated medical knowledge base rather than relying only on the LLM's internal knowledge.</li>
+            <li>Processes medical documents, creates embeddings, and stores them in Pinecone for semantic retrieval.</li>
+            <li>Uses cosine-similarity-based retrieval to identify relevant knowledge before generating an answer.</li>
+            <li>Evaluates retrieval quality using metrics such as Precision@K and Recall@K to improve the RAG pipeline.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 02 -->
+      <div class="project">
+        <div class="project-num">02</div>
+
+        <div>
+          <div class="project-title">JobMatch AI — AI-Powered Job Recommendation System</div>
+
+          <div class="project-stack">
+            Python · Groq API · PyMuPDF · Streamlit · Apify · NLP
+          </div>
+
+          <ul>
+            <li>Built an AI application that analyzes an uploaded resume and extracts relevant skills, qualifications, and job-related information.</li>
+            <li>Performs skill-gap analysis and generates a personalized learning roadmap based on target roles.</li>
+            <li>Uses Apify-powered job data collection to discover relevant job opportunities from online job sources.</li>
+            <li>Provides an interactive Streamlit interface for resume analysis, recommendations, and learning guidance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 03 -->
+      <div class="project">
+        <div class="project-num">03</div>
+
+        <div>
+          <div class="project-title">LoanPredictor — Loan Approval Prediction</div>
+
+          <div class="project-stack">
+            Python · Scikit-learn · XGBoost · Pandas · Machine Learning
+          </div>
+
+          <ul>
+            <li>Built a machine-learning classification system to predict loan approval outcomes from applicant and financial attributes.</li>
+            <li>Compared Logistic Regression, Random Forest, and XGBoost models for classification performance.</li>
+            <li>Applied data preprocessing and model evaluation using precision, recall, F1-score, and ROC-AUC.</li>
+            <li>Analyzed model performance to understand how different algorithms behave on the loan approval prediction task.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section id="skills" class="section-alt">
+    <div class="wrap">
+
+      <div class="section-head">
+        <h2>Skills</h2>
+        <span class="section-index">03</span>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <h3>AI / ML</h3>
+          <div class="tag-row">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">NLP</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">RAG</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">C</span>
+            <span class="tag">SQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML / CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Frameworks & Libraries</h3>
+          <div class="tag-row">
+            <span class="tag">FastAPI</span>
+            <span class="tag">React.js</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Hugging Face</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>AI Platforms & Data</h3>
+          <div class="tag-row">
+            <span class="tag">Gemini API</span>
+            <span class="tag">Groq API</span>
+            <span class="tag">Pinecone</span>
+            <span class="tag">OpenAI APIs</span>
+            <span class="tag">Apify</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Databases</h3>
+          <div class="tag-row">
+            <span class="tag">MongoDB</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Vector Databases</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <div class="tag-row">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Postman</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BACKGROUND ==================== -->
+  <section id="background">
+    <div class="wrap">
+
+      <div class="section-head">
+        <h2>Background</h2>
+        <span class="section-index">04</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022 – 2026</div>
+        <div>
+          <div class="timeline-title">B.Tech, Computer Science — RGUKT Nuzvid</div>
+          <div class="timeline-sub">Computer Science and Engineering</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2020 – 2022</div>
+        <div>
+          <div class="timeline-title">Pre-University Course — RGUKT Nuzvid</div>
+          <div class="timeline-sub">MPC</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Certifications</div>
+        <div>
+          <div class="timeline-title">Artificial Intelligence — SkillDzire</div>
+          <div class="timeline-sub">Additional learning in Deep Learning and Large Language Models</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Oct 2021 – May 2023</div>
+        <div>
+          <div class="timeline-title">NSS Volunteer, RGUKT IIIT-Nuzvid</div>
+          <div class="timeline-sub">
+            Two years of community service; participated in technical and cultural
+            events with faculty and student teams.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="section-alt">
+    <div class="wrap">
+
+      <div class="section-head">
+        <h2>Let's build something that actually solves a problem.</h2>
+        <span class="section-index">05</span>
+      </div>
+
+      <a class="contact-email" href="mailto:ruteshadithya181@gmail.com">
+        ruteshadithya181@gmail.com
+      </a>
+
+      <div class="contact-meta">
+        <a href="tel:+918247086179">+91 82470 86179</a>
+
+        <a
+          href="https://github.com/RuteshAdithya"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/RuteshAdithya
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/rutesh-adithya-490477253/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          linkedin.com/in/rutesh-adithya-490477253
+        </a>
+
+        <span>Anantapur, Andhra Pradesh, India</span>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Rutesh Adithya</span>
+  <span>AI / ML Engineer · GenAI · RAG · Machine Learning</span>
+</footer>
+
+<script>
+  // Header border on scroll
+  const header = document.getElementById('siteHeader');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Typing role line
+  const roles = [
+    "AI / ML Engineer",
+    "RAG & LLM Application Builder",
+    "Machine Learning Developer",
+    "Full-Stack Developer"
+  ];
+
+  const roleEl = document.getElementById('roleLine');
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (reduceMotion) {
+    roleEl.textContent = roles[0];
+  } else {
+    let r = 0;
+    let c = 0;
+    let deleting = false;
+
+    function tick() {
+      const word = roles[r];
+
+      roleEl.innerHTML =
+        word.slice(0, c) +
+        '<span class="cursor">&nbsp;</span>';
+
+      if (!deleting) {
+        c++;
+
+        if (c > word.length) {
+          deleting = true;
+          setTimeout(tick, 1400);
+          return;
+        }
+      } else {
+        c--;
+
+        if (c === 0) {
+          deleting = false;
+          r = (r + 1) % roles.length;
+        }
+      }
+
+      setTimeout(tick, deleting ? 35 : 65);
+    }
+
+    tick();
+  }
+
+  // Node graph — small retrieval-network visual
+  const canvas = document.getElementById('graph');
+  const ctx = canvas.getContext('2d');
+
+  let w = 0;
+  let h = 0;
+  let nodes = [];
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+
+    w = canvas.width = Math.max(1, Math.floor(rect.width));
+    h = canvas.height = Math.max(1, Math.floor(rect.height));
+  }
+
+  function initNodes() {
+    nodes = [];
+
+    const count = w < 500 ? 14 : 22;
+
+    for (let i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        r: 1.6 + Math.random() * 1.8
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (const n of nodes) {
+      n.x += n.vx;
+      n.y += n.vy;
+
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+    }
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i];
+        const b = nodes[j];
+
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 130) {
+          ctx.strokeStyle =
+            `rgba(231,183,95,${0.14 * (1 - dist / 130)})`;
+          ctx.lineWidth = 1;
+
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const n of nodes) {
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(111,169,207,0.85)';
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function step() {
+    draw();
+
+    if (!reduceMotion) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  resize();
+  initNodes();
+  step();
+
+  window.addEventListener('resize', () => {
+    resize();
+    initNodes();
+
+    if (reduceMotion) {
+      draw();
+    }
+  });
+</script>
+
+</body>
+</html>
