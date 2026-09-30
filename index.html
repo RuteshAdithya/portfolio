@@ -1,629 +1,496 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rutesh Adithya — AI/ML Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #0B0D10;
-    --panel: #14171B;
-    --panel-line: #262B31;
-    --ink: #EAE7DF;
-    --ink-dim: #8B9198;
-    --gold: #E7B75F;
-    --gold-dim: #6b5a34;
-    --steel: #6FA9CF;
-    --radius: 3px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  *{box-sizing:border-box; margin:0; padding:0;}
+  <title>Rutesh Adithya — AI/ML Engineer</title>
 
-  html{scroll-behavior:smooth;}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
 
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  h1,h2,h3, .display{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    letter-spacing:-0.01em;
-  }
-
-  a{ color:inherit; text-decoration:none; }
-
-  .wrap{
-    max-width:1120px;
-    margin:0 auto;
-    padding:0 32px;
-  }
-
-  /* ---------- Nav ---------- */
-  header{
-    position:fixed;
-    top:0; left:0; right:0;
-    z-index:50;
-    background:rgba(11,13,16,0.6);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid transparent;
-    transition:border-color .3s ease;
-  }
-  header.scrolled{ border-bottom-color:var(--panel-line); }
-
-  nav.wrap{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:68px;
-  }
-
-  .brand{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.05rem; }
-  .brand span{ color:var(--gold); }
-
-  .nav-links{ display:flex; gap:28px; font-size:0.9rem; color:var(--ink-dim); }
-  .nav-links a:hover{ color:var(--ink); }
-
-  .nav-cta{
-    border:1px solid var(--panel-line);
-    padding:8px 16px;
-    border-radius:var(--radius);
-    font-size:0.85rem;
-    color:var(--ink);
-  }
-  .nav-cta:hover{ border-color:var(--gold); color:var(--gold); }
-
-  @media(max-width:720px){ .nav-links{ display:none; } }
-
-  /* ---------- Hero ---------- */
-  section#hero{
-    padding:168px 0 96px;
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:48px;
-    align-items:center;
-    min-height:88vh;
-  }
-
-  .eyebrow{
-    color:var(--ink-dim);
-    font-size:0.95rem;
-    margin-bottom:18px;
-  }
-
-  h1.name{
-    font-size:clamp(2.4rem, 5vw, 4rem);
-    line-height:1.05;
-    margin-bottom:20px;
-  }
-
-  .role-line{
-    font-size:clamp(1.1rem, 2vw, 1.4rem);
-    color:var(--gold);
-    height:1.8em;
-    margin-bottom:22px;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:500;
-  }
-  .role-line .cursor{
-    display:inline-block;
-    width:2px;
-    background:var(--gold);
-    margin-left:2px;
-    animation:blink 1s steps(1) infinite;
-  }
-  @keyframes blink{ 50%{ opacity:0; } }
-
-  .hero-desc{
-    max-width:52ch;
-    color:var(--ink-dim);
-    font-size:1.02rem;
-    margin-bottom:34px;
-  }
-
-  .hero-links{ display:flex; gap:16px; flex-wrap:wrap; }
-
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:12px 22px;
-    border-radius:var(--radius);
-    font-size:0.92rem;
-    font-weight:500;
-    transition:transform .15s ease, background .15s ease, border-color .15s ease;
-  }
-  .btn-primary{ background:var(--gold); color:#141414; }
-  .btn-primary:hover{ transform:translateY(-2px); }
-  .btn-ghost{ border:1px solid var(--panel-line); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--ink-dim); transform:translateY(-2px); }
-
-  .hero-visual{ position:relative; height:420px; display:flex; align-items:center; justify-content:center; }
-  #graph{ position:absolute; inset:0; width:100%; height:100%; display:block; }
-
-  .portrait-frame{
-    position:relative;
-    z-index:2;
-    width:280px;
-    height:280px;
-    border-radius:50%;
-    padding:6px;
-    background:linear-gradient(160deg, var(--gold), var(--panel-line) 60%);
-  }
-  .portrait-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-    display:block;
-    background:var(--panel);
-  }
-
-  @media(max-width:900px){
-    section#hero{ grid-template-columns:1fr; padding-top:130px; }
-    .hero-visual{ height:300px; order:-1; }
-    .portrait-frame{ width:210px; height:210px; }
-  }
-
-  /* ---------- Section shell ---------- */
-  section{ padding:96px 0; border-top:1px solid var(--panel-line); scroll-margin-top:68px; }
-  section#hero{ border-top:none; }
-  section.section-alt{ background:var(--panel); }
-
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    margin-bottom:48px;
-    gap:20px;
-    flex-wrap:wrap;
-    padding-bottom:18px;
-    border-bottom:1px solid var(--panel-line);
-  }
-  .section-head h2{ font-size:clamp(1.6rem,3vw,2.1rem); }
-  .section-index{
-    color:var(--bg);
-    background:var(--gold);
-    font-family:'Space Grotesk',sans-serif;
-    font-size:0.85rem;
-    font-weight:600;
-    padding:4px 10px;
-    border-radius:var(--radius);
-    white-space:nowrap;
-  }
-
-  /* ---------- About ---------- */
-  #about .about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:56px;
-  }
-  #about p{ color:var(--ink-dim); max-width:58ch; margin-bottom:16px; }
-  #about p strong{ color:var(--ink); font-weight:500; }
-
-  .fact-list{ display:flex; flex-direction:column; gap:20px; }
-  .fact{ border-left:2px solid var(--panel-line); padding-left:18px; }
-  .fact .fact-label{ color:var(--ink-dim); font-size:0.85rem; margin-bottom:4px; }
-  .fact .fact-value{ font-family:'Space Grotesk',sans-serif; font-size:1.05rem; }
-
-  @media(max-width:800px){ #about .about-grid{ grid-template-columns:1fr; } }
-
-  /* ---------- Projects ---------- */
-  .project{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:28px;
-    padding:36px 0;
-    border-top:1px solid var(--panel-line);
-  }
-  .project:first-of-type{ border-top:none; }
-  .project-num{ font-family:'Space Grotesk',sans-serif; color:var(--gold-dim); font-size:1.4rem; }
-  .project-title{ font-size:1.35rem; margin-bottom:10px; }
-  .project-stack{ color:var(--gold); font-family:'Space Grotesk',sans-serif; font-size:0.85rem; margin-bottom:14px; }
-  .project ul{ list-style:none; color:var(--ink-dim); max-width:68ch; }
-  .project li{ position:relative; padding-left:18px; margin-bottom:8px; }
-  .project li::before{ content:"—"; position:absolute; left:0; color:var(--panel-line); }
-
-  @media(max-width:640px){ .project{ grid-template-columns:1fr; } .project-num{ display:none; } }
-
-  /* ---------- Skills ---------- */
-  .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:36px; }
-  .skill-group h3{ font-size:0.95rem; color:var(--ink-dim); font-weight:500; margin-bottom:14px; font-family:'Inter',sans-serif;}
-  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
-  .tag{
-    border:1px solid var(--panel-line);
-    padding:6px 12px;
-    border-radius:var(--radius);
-    font-size:0.85rem;
-    color:var(--ink);
-  }
-
-  /* ---------- Timeline (education/leadership) ---------- */
-  .timeline-item{ display:grid; grid-template-columns:160px 1fr; gap:24px; padding:22px 0; border-top:1px solid var(--panel-line); }
-  .timeline-item:first-child{ border-top:none; }
-  .timeline-date{ color:var(--ink-dim); font-size:0.9rem; }
-  .timeline-title{ font-size:1.05rem; margin-bottom:6px; }
-  .timeline-sub{ color:var(--ink-dim); font-size:0.92rem; max-width:60ch; }
-  @media(max-width:600px){ .timeline-item{ grid-template-columns:1fr; gap:6px; } }
-
-  /* ---------- Contact / Footer ---------- */
-  #contact{ text-align:left; }
-  #contact h2{ font-size:clamp(2rem,5vw,3.2rem); max-width:16ch; margin-bottom:28px; }
-  .contact-email{ font-size:clamp(1.1rem,2.4vw,1.5rem); color:var(--gold); font-family:'Space Grotesk',sans-serif; }
-  .contact-email:hover{ text-decoration:underline; }
-
-  .contact-meta{ display:flex; gap:32px; flex-wrap:wrap; margin-top:40px; color:var(--ink-dim); font-size:0.92rem; }
-  .contact-meta a:hover{ color:var(--ink); }
-
-  footer{ padding:32px 0; border-top:1px solid var(--panel-line); color:var(--ink-dim); font-size:0.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
-  }
-
-  ::selection{ background:var(--gold); color:#141414; }
-
-  :focus-visible{ outline:2px solid var(--steel); outline-offset:3px; }
-</style>
-</head>
-<body>
-
-<header id="siteHeader">
-  <nav class="wrap">
-    <div class="brand">Rutesh<span>.</span>Adithya</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#background">Background</a>
-    </div>
-    <a class="nav-cta" href="#contact">Get in touch</a>
-  </nav>
-</header>
-
-<main>
-  <section id="hero" class="wrap">
-    <div>
-      <div class="eyebrow">Anantapur, Andhra Pradesh, India</div>
-      <h1 class="name">Rutesh Adithya</h1>
-      <div class="role-line" id="roleLine"></div>
-      <p class="hero-desc">
-        Final-year Computer Science student building retrieval-augmented
-        assistants, agentic workflows, and the backend systems that keep
-        language models grounded, fast, and useful in production.
-      </p>
-      <div class="hero-links">
-        <a class="btn btn-primary" href="#work">View my work</a>
-        <a class="btn btn-ghost" href="mailto:ruteshadithya181@gmail.com">Email me</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <canvas id="graph"></canvas>
-      <div class="portrait-frame">
-        <img src="assets/profile.png" alt="Portrait of Rutesh Adithya">
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section-alt">
-    <div class="wrap">
-    <div class="section-head">
-      <h2>About</h2>
-      <span class="section-index">01</span>
-    </div>
-    <div class="about-grid">
-      <div>
-        <p>
-          I'm a B.Tech Computer Science student at <strong>RGUKT Nuzvid</strong>,
-          graduating in 2026 with a CGPA of 8.4. Most of my time goes into
-          taking large language models past the demo stage — grounding them
-          in real data with retrieval pipelines, wiring them into agentic
-          workflows, and shipping the APIs and interfaces around them.
-        </p>
-        <p>
-          I've built a multilingual support assistant that reasons in
-          English, Telugu, and Tenglish, an agent that runs restaurant
-          support over WhatsApp, and a resume-parsing tool that turns a CV
-          into a personalised learning roadmap. I like projects where the
-          model has to do something concrete, not just answer a question.
-        </p>
-      </div>
-      <div class="fact-list">
-        <div class="fact">
-          <div class="fact-label">Currently</div>
-          <div class="fact-value">B.Tech CS, RGUKT Nuzvid — 2022 to 2026</div>
-        </div>
-        <div class="fact">
-          <div class="fact-label">Focus areas</div>
-          <div class="fact-value">RAG pipelines, LLM agents, backend APIs</div>
-        </div>
-        <div class="fact">
-          <div class="fact-label">Core stack</div>
-          <div class="fact-value">Python · FastAPI · LangChain · React</div>
-        </div>
-        <div class="fact">
-          <div class="fact-label">Based in</div>
-          <div class="fact-value">Anantapur, Andhra Pradesh</div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="wrap">
-    <div class="section-head">
-      <h2>Selected work</h2>
-      <span class="section-index">02</span>
-    </div>
-
-    <div class="project">
-      <div class="project-num">01</div>
-      <div>
-        <div class="project-title">Multilingual AI Customer Support Assistant</div>
-        <div class="project-stack">FastAPI · Groq LLM · RAG · Pinecone · React.js</div>
-        <ul>
-          <li>Handles English, Telugu, and Tenglish through both typed text and real-time microphone voice input.</li>
-          <li>Retrieves company policies through a Pinecone-backed RAG pipeline so answers stay grounded rather than guessed.</li>
-          <li>Runs Groq-hosted LLMs behind a FastAPI backend for low-latency, hallucination-resistant responses.</li>
-          <li>Split into modular services — inference, ingestion, retrieval, and REST APIs — so each piece scales on its own.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-num">02</div>
-      <div>
-        <div class="project-title">WhatsApp AI Restaurant Agent</div>
-        <div class="project-stack">n8n · Gemini API · WhatsApp · Google Sheets</div>
-        <ul>
-          <li>Understands customer queries over WhatsApp and answers using the Gemini API inside an n8n workflow.</li>
-          <li>Pulls live menu items, prices, hours, and availability straight from a connected Google Sheet.</li>
-          <li>Keeps conversational memory so replies stay consistent across a customer's full message thread.</li>
-          <li>Combines LLM reasoning with real business data in a tool-using agentic setup, not a static script.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="project">
-      <div class="project-num">03</div>
-      <div>
-        <div class="project-title">AI-Powered Job Recommendation System</div>
-        <div class="project-stack">Python · Groq API · Apify · Streamlit</div>
-        <ul>
-          <li>Parses uploaded resumes with the Groq API to pull out skills, experience, and qualifications.</li>
-          <li>Runs a skill-gap analysis against target roles and generates a personalised learning roadmap.</li>
-          <li>Pulls live listings from LinkedIn and Naukri via Apify to recommend jobs that actually fit the profile.</li>
-        </ul>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <section id="skills" class="section-alt">
-    <div class="wrap">
-    <div class="section-head">
-      <h2>Skills</h2>
-      <span class="section-index">03</span>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h3>AI / ML</h3>
-        <div class="tag-row">
-          <span class="tag">Machine Learning</span>
-          <span class="tag">Deep Learning</span>
-          <span class="tag">LLMs</span>
-          <span class="tag">RAG</span>
-          <span class="tag">AI Agents</span>
-          <span class="tag">Prompt Engineering</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Languages</h3>
-        <div class="tag-row">
-          <span class="tag">Python</span>
-          <span class="tag">Java</span>
-          <span class="tag">C</span>
-          <span class="tag">SQL</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">HTML / CSS</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Frameworks &amp; Libraries</h3>
-        <div class="tag-row">
-          <span class="tag">FastAPI</span>
-          <span class="tag">React.js</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">LangChain</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Hugging Face Transformers</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Platforms</h3>
-        <div class="tag-row">
-          <span class="tag">Gemini API</span>
-          <span class="tag">Groq API</span>
-          <span class="tag">Pinecone</span>
-          <span class="tag">n8n</span>
-          <span class="tag">Apify</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Tools</h3>
-        <div class="tag-row">
-          <span class="tag">Git</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">Postman</span>
-          <span class="tag">REST APIs</span>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <section id="background">
-    <div class="wrap">
-    <div class="section-head">
-      <h2>Background</h2>
-      <span class="section-index">04</span>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date">2022 – 2026</div>
-      <div>
-        <div class="timeline-title">B.Tech, Computer Science — RGUKT Nuzvid</div>
-        <div class="timeline-sub">CGPA 8.4</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2020 – 2022</div>
-      <div>
-        <div class="timeline-title">Pre-University Course — RGUKT Nuzvid</div>
-        <div class="timeline-sub">CGPA 9.64</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Certifications</div>
-      <div>
-        <div class="timeline-title">Artificial Intelligence — SkillDzire</div>
-        <div class="timeline-sub">Plus NPTEL courses in Deep Learning and Large Language Models</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Oct 2021 – May 2023</div>
-      <div>
-        <div class="timeline-title">NSS Volunteer, RGUKT IIIT-Nuzvid</div>
-        <div class="timeline-sub">Two years of community service; co-organised technical and cultural events with faculty and student teams.</div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section-alt">
-    <div class="wrap">
-    <div class="section-head">
-      <h2>Let's build something that actually retrieves the right answer.</h2>
-      <span class="section-index">05</span>
-    </div>
-    <a class="contact-email" href="mailto:ruteshadithya181@gmail.com">ruteshadithya181@gmail.com</a>
-    <div class="contact-meta">
-      <a href="tel:+918247086179">+91 82470 86179</a>
-      <a href="https://github.com/RuteshAdithya" target="_blank" rel="noopener">github.com/RuteshAdithya</a>
-      <a href="https://linkedin.com/in/RuteshAdithya" target="_blank" rel="noopener">linkedin.com/in/RuteshAdithya</a>
-      <span>Anantapur, Andhra Pradesh, India</span>
-    </div>
-    </div>
-  </section>
-</main>
-
-<footer class="wrap">
-  <span>© 2026 Rutesh Adithya</span>
-  <span>Built with FastAPI, LangChain, and a lot of retrieval debugging.</span>
-</footer>
-
-<script>
-  // header border on scroll
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 10);
-  });
-
-  // typing role line
-  const roles = ["AI / ML Engineer", "RAG & LLM Agent Builder", "Full-Stack Developer"];
-  const roleEl = document.getElementById('roleLine');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (reduceMotion) {
-    roleEl.textContent = roles[0];
-  } else {
-    let r = 0, c = 0, deleting = false;
-    function tick(){
-      const word = roles[r];
-      roleEl.textContent = word.slice(0, c) ;
-      roleEl.innerHTML = word.slice(0, c) + '<span class="cursor">&nbsp;</span>';
-      if(!deleting){
-        c++;
-        if(c > word.length){ deleting = true; setTimeout(tick, 1400); return; }
-      } else {
-        c--;
-        if(c === 0){ deleting = false; r = (r+1) % roles.length; }
-      }
-      setTimeout(tick, deleting ? 35 : 65);
+  <style>
+    :root {
+      --bg: #0B0D10;
+      --panel: #14171B;
+      --panel-line: #262B31;
+      --ink: #EAE7DF;
+      --ink-dim: #8B9198;
+      --gold: #E7B75F;
+      --gold-dim: #6b5a34;
+      --steel: #6FA9CF;
+      --radius: 3px;
     }
-    tick();
-  }
 
-  // node graph — a small retrieval-network visual
-  const canvas = document.getElementById('graph');
-  const ctx = canvas.getContext('2d');
-  let w, h, nodes = [];
-
-  function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = canvas.width = rect.width;
-    h = canvas.height = rect.height;
-  }
-
-  function initNodes(){
-    nodes = [];
-    const count = w < 500 ? 14 : 22;
-    for(let i=0;i<count;i++){
-      nodes.push({
-        x: Math.random()*w,
-        y: Math.random()*h,
-        vx: (Math.random()-0.5)*0.18,
-        vy: (Math.random()-0.5)*0.18,
-        r: 1.6 + Math.random()*1.8
-      });
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  }
 
-  function step(){
-    ctx.clearRect(0,0,w,h);
-    for(const n of nodes){
-      n.x += n.vx; n.y += n.vy;
-      if(n.x < 0 || n.x > w) n.vx *= -1;
-      if(n.y < 0 || n.y > h) n.vy *= -1;
+    html {
+      scroll-behavior: smooth;
     }
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const a = nodes[i], b = nodes[j];
-        const dx = a.x-b.x, dy = a.y-b.y;
-        const dist = Math.sqrt(dx*dx+dy*dy);
-        if(dist < 130){
-          ctx.strokeStyle = `rgba(231,183,95,${0.14 * (1 - dist/130)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x,a.y);
-          ctx.lineTo(b.x,b.y);
-          ctx.stroke();
-        }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ---------- Navigation ---------- */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(11, 13, 16, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    header.scrolled {
+      border-bottom-color: var(--panel-line);
+    }
+
+    nav.wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.9rem;
+      color: var(--ink-dim);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--panel-line);
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    .nav-cta:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
       }
     }
-    for(const n of nodes){
-      ctx.beginPath();
-      ctx.fillStyle = 'rgba(111,169,207,0.85)';
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
-      ctx.fill();
+
+    /* ---------- Hero ---------- */
+
+    section#hero {
+      padding: 168px 0 96px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      min-height: 88vh;
     }
-    if(!reduceMotion) requestAnimationFrame(step);
-  }
 
-  resize();
-  initNodes();
-  step();
-  window.addEventListener('resize', () => { resize(); initNodes(); });
-</script>
+    .eyebrow {
+      color: var(--ink-dim);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
 
-</body>
-</html>
+    h1.name {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .role-line {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--gold);
+      height: 1.8em;
+      margin-bottom: 22px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+    }
+
+    .role-line .cursor {
+      display: inline-block;
+      width: 2px;
+      background: var(--gold);
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero-desc {
+      max-width: 56ch;
+      color: var(--ink-dim);
+      font-size: 1.02rem;
+      margin-bottom: 34px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #141414;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--panel-line);
+      color: var(--ink);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink-dim);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #graph {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .portrait-frame {
+      position: relative;
+      z-index: 2;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(
+        160deg,
+        var(--gold),
+        var(--panel-line) 60%
+      );
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      background: var(--panel);
+    }
+
+    @media (max-width: 900px) {
+      section#hero {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+      }
+
+      .hero-visual {
+        height: 300px;
+        order: -1;
+      }
+
+      .portrait-frame {
+        width: 210px;
+        height: 210px;
+      }
+    }
+
+    /* ---------- Section shell ---------- */
+
+    section {
+      padding: 96px 0;
+      border-top: 1px solid var(--panel-line);
+      scroll-margin-top: 68px;
+    }
+
+    section#hero {
+      border-top: none;
+    }
+
+    section.section-alt {
+      background: var(--panel);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--panel-line);
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+    }
+
+    .section-index {
+      color: var(--bg);
+      background: var(--gold);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius);
+      white-space: nowrap;
+    }
+
+    /* ---------- About ---------- */
+
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+
+    #about p {
+      color: var(--ink-dim);
+      max-width: 58ch;
+      margin-bottom: 16px;
+    }
+
+    #about p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .fact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .fact {
+      border-left: 2px solid var(--panel-line);
+      padding-left: 18px;
+    }
+
+    .fact .fact-label {
+      color: var(--ink-dim);
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .fact .fact-value {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 800px) {
+      #about .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- Projects ---------- */
+
+    .project {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 28px;
+      padding: 36px 0;
+      border-top: 1px solid var(--panel-line);
+    }
+
+    .project:first-of-type {
+      border-top: none;
+    }
+
+    .project-num {
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--gold-dim);
+      font-size: 1.4rem;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .project-stack {
+      color: var(--gold);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+    }
+
+    .project ul {
+      list-style: none;
+      color: var(--ink-dim);
+      max-width: 70ch;
+    }
+
+    .project li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .project li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--panel-line);
+    }
+
+    @media (max-width: 640px) {
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .project-num {
+        display: none;
+      }
+    }
+
+    /* ---------- Skills ---------- */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 36px;
+    }
+
+    .skill-group h3 {
+      font-size: 0.95rem;
+      color: var(--ink-dim);
+      font-weight: 500;
+      margin-bottom: 14px;
+      font-family: "Inter", sans-serif;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      border: 1px solid var(--panel-line);
+      padding: 6px 12px;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+
+    /* ---------- Timeline ---------- */
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--panel-line);
+    }
+
+    .timeline-item:first-child {
+      border-top: none;
+    }
+
+    .timeline-date {
+      color: var(--ink-dim);
+      font-size: 0.9rem;
+    }
+
+    .timeline-title {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-sub {
+      color: var(--ink-dim);
+      font-size: 0.92rem;
+      max-width: 65ch;
+    }
+
+    @media (max-width: 600px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+```
